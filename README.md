@@ -7,7 +7,7 @@ http://wpe-tests.klipse.tech/html/html5test.html
 ## HLS 
 
 - http://wpe-tests.klipse.tech/html/has_player_demo.html?stream=http://apache1.rd.francetelecom.com/BBB/index.m3u8
-- https://viebel.github.io/wpe-tests/html/has_player_demo.html?stream=http://91.121.4.105/has/md7/clear/ottv_hd_ada_20164.m3u8
+- http://wpe-tests.klipse.tech/html/has_player_demo.html?stream=http://91.121.4.105/has/md7/clear/ottv_hd_ada_20164.m3u8
 
 ## DASH
 
