@@ -9,10 +9,19 @@
         </div>
         <script src="../javascript/hasplayer.js"></script>
         <script>
+	  function getUrlArgs() {
+  var args = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+      args[key] = value;
+    });
+  return args;
+	  }
+	  
             (function(){
                 var stream = {
             //url: "../video/SDTV_HLS_STREAM_CINDIRELLA/ottv_hd_ada_20164.m3u8"
-	    url: "http://apache1.rd.francetelecom.com/BBB/index.m3u8"
+	  //url: "http://apache1.rd.francetelecom.com/BBB/index.m3u8"
+	  url: getUrlArgs().stream
                 };
                 var mediaPlayer = new MediaPlayer();
                 mediaPlayer.init(document.querySelector("#videoPlayer"));
