@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title>hasplayer.js Rocks</title>
+    </head>
+    <body>
+        <div>
+            <video id="videoPlayer" controls="true"></video>
+        </div>
+        <script src="../javascript/hasplayer.js"></script>
+        <script>
+            (function(){
+                var stream = {
+            //url: "../video/SDTV_HLS_STREAM_CINDIRELLA/ottv_hd_ada_20164.m3u8"
+	    url: "http://apache1.rd.francetelecom.com/BBB/index.m3u8"
+                };
+                var mediaPlayer = new MediaPlayer();
+                mediaPlayer.init(document.querySelector("#videoPlayer"));
+                mediaPlayer.load(stream);
+            })();
+        </script>
+    </body>
+</html>
