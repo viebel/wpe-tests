@@ -27,9 +27,24 @@
           var mediaPlayer = new MediaPlayer();
 	  console.log("Has Player Version: " + mediaPlayer.getVersion());
 	  console.log("Playing stream: " + getUrlArgs().stream);
-                mediaPlayer.init(document.querySelector("#videoPlayer"));
-                mediaPlayer.load(stream);
-            })();
+
+	  mediaPlayer.init(document.querySelector("#videoPlayer"));
+	  
+	  mediaPlayer.addEventListener("error", function(e) { console.error("MEDIA PLAYER: error ---" + JSON.stringify(e)) });
+	  mediaPlayer.addEventListener("warning", function(e) { console.log("MEDIA PLAYER: warning ---" + JSON.stringigy(e)) });
+          mediaPlayer.addEventListener("play", function(e) { console.log("MEDIA PLAYER: play ---" + JSON.stringify(e)) });
+	  
+
+	  mediaPlayer.load(stream);
+
+	  setTimeout(function() {
+	     console.log("PLAY manually");
+	     mediaPlayer.play();
+	  }, 5000);
+	  
+          })();
+
+
         </script>
     </body>
 </html>
