@@ -9,6 +9,7 @@
         </div>
         <script src="../javascript/hasplayer.js"></script>
         <script>
+	  console.log("Starting the show...");
 	  function getUrlArgs() {
   var args = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
@@ -17,13 +18,15 @@
   return args;
 	  }
 	  
-            (function(){
+          (function(){
                 var stream = {
             //url: "../video/SDTV_HLS_STREAM_CINDIRELLA/ottv_hd_ada_20164.m3u8"
 	  //url: "http://apache1.rd.francetelecom.com/BBB/index.m3u8"
-	  url: getUrlArgs().stream
+	  url: getUrlArgs().stream 
                 };
-                var mediaPlayer = new MediaPlayer();
+          var mediaPlayer = new MediaPlayer();
+	  console.log("Has Player Version: " + mediaPlayer.getVersion());
+	  console.log("Playing stream: " + getUrlArgs().stream);
                 mediaPlayer.init(document.querySelector("#videoPlayer"));
                 mediaPlayer.load(stream);
             })();
