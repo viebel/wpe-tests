@@ -7,8 +7,8 @@ http://wpe-tests.klipse.tech/html/html5test.html
 ## url parameters
 
 - debug=1: display tracing info from hasplayer
-- stream=<url>: the url of the stream to play
-- playAfter=<msec>: send a `play` command after `msec` ms
+- stream=url: the url of the stream to play
+- playAfter=msec: send a `play` command after `msec` ms
 
 ## HLS 
 
