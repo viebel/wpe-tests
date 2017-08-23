@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>hasplayer.js Rocks</title>
+        <title>Stream in HasPlayer</title>
     </head>
     <body>
         <div>
@@ -29,6 +29,10 @@
 	  console.log("Playing stream: " + getUrlArgs().stream);
 
 	  mediaPlayer.init(document.querySelector("#videoPlayer"));
+
+	  if(getUrlArgs().debug) {
+	     mediaPlayer.setDebug(true);
+	  }
 	  
 	  mediaPlayer.addEventListener("error", function(e) { console.error("MEDIA PLAYER: error ---" + JSON.stringify(e)) });
 	  mediaPlayer.addEventListener("warning", function(e) { console.log("MEDIA PLAYER: warning ---" + JSON.stringigy(e)) });
@@ -37,10 +41,13 @@
 
 	  mediaPlayer.load(stream);
 
-	  setTimeout(function() {
-	     console.log("PLAY manually");
-	     mediaPlayer.play();
-	  }, 5000);
+	  if(getUrlArgs().playAfter) {
+	    console.log("Will play after " + getUrlArgs().playAfter*1 + " ms");
+	    setTimeout(function() {
+	       console.log("PLAY manually");
+	       mediaPlayer.play();
+	    }, getUrlArgs().playAfter*1);
+	  }
 	  
           })();
 

@@ -4,6 +4,12 @@ http://wpe-tests.klipse.tech/html/html5test.html
 
 # Video with HasPlayer
 
+## url parameters
+
+- debug=1: display tracing info from hasplayer
+- stream=<url>: the url of the stream to play
+- playAfter=<msec>: send a `play` command after `msec` ms
+
 ## HLS 
 
 - http://wpe-tests.klipse.tech/html/has_player_demo.html?stream=http://apache1.rd.francetelecom.com/BBB/index.m3u8
