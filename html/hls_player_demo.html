@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title> HLS Player </title>
+  </head>
+  <body>
+    <script src="../javascript/hls.js"></script>
+    <video id="video"></video>
+    <script>
+      console.log("Starting the show...");
+      function getUrlArgs() {
+        var args = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+          args[key] = value;
+        });
+        return args;
+      }
+
+      
+      if(Hls.isSupported()) {
+      	  console.log("Playing stream: " + getUrlArgs().stream);
+        var video = document.getElementById('video');
+        var hls = new Hls();
+        //hls.loadSource('https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8');
+        hls.loadSource(getUrlArgs().stream);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+          video.play();
+      });
+      	  if(getUrlArgs().playAfter) {
+	    console.log("Will play after " + getUrlArgs().playAfter*1 + " ms");
+	    setTimeout(function() {
+	       console.log("PLAY manually");
+	       video.play();
+	    }, getUrlArgs().playAfter*1);
+	  }
+      } else {
+        console.log("HLS is not supported on this browser");
+      }
+    </script>
+  </body>
+</html>
