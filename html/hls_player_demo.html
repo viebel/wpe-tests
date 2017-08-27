@@ -23,7 +23,9 @@
       	  console.log("Playing stream: " + getUrlArgs().stream);
       var video = document.getElementById('video');
       var config = {
-      debug: getUrlArgs().debug ? true : false
+      debug: getUrlArgs().debug ? true : false,
+      nudgeMaxRetry: 10,
+      lowBufferWatchdogPeriod: 2
       };
         var hls = new Hls(config);
       //hls.loadSource('https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8');
