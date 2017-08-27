@@ -1,10 +1,12 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title> HLS Player </title>
   </head>
   <body>
-    <script src="../javascript/hls.js"></script>
+    <!--script src="../javascript/hls.js"></scripti-->
+    <script src="../javascript/hls.js"></script>    
     <video id="video"></video>
     <script>
       console.log("Starting the show...");
@@ -19,12 +21,24 @@
       
       if(Hls.isSupported()) {
       	  console.log("Playing stream: " + getUrlArgs().stream);
-        var video = document.getElementById('video');
-        var hls = new Hls();
-        //hls.loadSource('https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8');
+      var video = document.getElementById('video');
+      var config = {
+      debug: getUrlArgs().debug ? true : false
+      };
+        var hls = new Hls(config);
+      //hls.loadSource('https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8');
+       hls.on(Hls.Events.ERROR, function (event, data) {
+    var errorType = data.type;
+    var errorDetails = data.details;
+      var errorFatal = data.fatal;
+      console.error("ERROR in HLS: " + data.type + " --- " + data.details);
+      });
         hls.loadSource(getUrlArgs().stream);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      hls.on(Hls.Events.MEDIA_ATTACHED, function() {
+      console.log("MEDIA ATTACHED");
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+          console.log("MANIFEST PARSED");
           video.play();
       });
       	  if(getUrlArgs().playAfter) {
@@ -33,7 +47,8 @@
 	       console.log("PLAY manually");
 	       video.play();
 	    }, getUrlArgs().playAfter*1);
-	  }
+      }
+      });
       } else {
         console.log("HLS is not supported on this browser");
       }
